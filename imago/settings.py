@@ -40,6 +40,13 @@ class Settings(BaseSettings):
 
     log_level: LogLevel = LogLevel.INFO
 
+    # Variables for elastic search
+    elasticsearch_host: str
+    elasticsearch_port: int
+    elasticsearch_index: str
+    elasticsearch_user: str
+    elasticsearch_password: str
+
     # Variables for Redis
     redis_host: str = "imago-redis"
     redis_port: int = 6379
@@ -73,4 +80,4 @@ class Settings(BaseSettings):
     )
 
 
-settings = Settings()
+settings = Settings()  # type: ignore

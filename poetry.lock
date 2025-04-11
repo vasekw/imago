@@ -101,7 +101,7 @@ version = "2025.1.31"
 description = "Python package for providing Mozilla's CA Bundle."
 optional = false
 python-versions = ">=3.6"
-groups = ["dev"]
+groups = ["main", "dev"]
 files = [
     {file = "certifi-2025.1.31-py3-none-any.whl", hash = "sha256:ca78db4565a652026a4db2bcdf68f2fb589ea80d0be70e03929ed730746b84fe"},
     {file = "certifi-2025.1.31.tar.gz", hash = "sha256:3d5da6925056f6f18f119200434a4780a94263f10d1c21d032a6f6b2baa20651"},
@@ -227,6 +227,61 @@ tomli = {version = "*", optional = true, markers = "python_full_version <= \"3.1
 toml = ["tomli ; python_full_version <= \"3.11.0a6\""]
 
 [[package]]
+name = "dependency-injector"
+version = "4.38.0"
+description = "Dependency injection framework for Python"
+optional = false
+python-versions = "*"
+groups = ["main"]
+files = [
+    {file = "dependency-injector-4.38.0.tar.gz", hash = "sha256:bab4c323d822d3fc9936e8eb3c2f5553d75e9efdadac11d5b293a016e31a1477"},
+    {file = "dependency_injector-4.38.0-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:025eb5f97021663715bff8e01feb83d5b2f66fc17ece1042a194f1aae88c0d85"},
+    {file = "dependency_injector-4.38.0-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:f3c61334b196ab767eae43af207764349287d5eb0283d8ed1ab24608121aea35"},
+    {file = "dependency_injector-4.38.0-cp310-cp310-manylinux_2_5_i686.manylinux1_i686.manylinux_2_12_i686.manylinux2010_i686.whl", hash = "sha256:9bf4bfc52015e81c4f17647b7bbbe4e4549f041b3c6635b44a9ecede7594932c"},
+    {file = "dependency_injector-4.38.0-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:7aeba5882b06baf78978f33228e4c44133dada9173e330da68fbccca98520848"},
+    {file = "dependency_injector-4.38.0-cp310-cp310-win32.whl", hash = "sha256:445dbf5324eee215a465d7f3b1965b05e199c31caa09e63abf0f02d982791306"},
+    {file = "dependency_injector-4.38.0-cp310-cp310-win_amd64.whl", hash = "sha256:880edbcb5d810faa0623112e2e652a7bec73d20ce0708d9db998a0a40b62cbb9"},
+    {file = "dependency_injector-4.38.0-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:cd6f1c130462e7461a43f82fdc0d2ba25b5ef594db823dbd0e57f3d1b7c44f86"},
+    {file = "dependency_injector-4.38.0-cp36-cp36m-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:0be75905f7513886699d3ff5ed9aca233175c03808fc888da2a53b83af0a5d65"},
+    {file = "dependency_injector-4.38.0-cp36-cp36m-manylinux_2_5_i686.manylinux1_i686.manylinux_2_12_i686.manylinux2010_i686.whl", hash = "sha256:8d7f1a7d27de6295ce8b7ca69d1177817bf36c7cbaf73819e4bab04f87c5e962"},
+    {file = "dependency_injector-4.38.0-cp36-cp36m-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:e9c1ff387d7b7d814e9d29a531c6804acc67b1cca578c09abd3590fa7ec6bf06"},
+    {file = "dependency_injector-4.38.0-cp36-cp36m-win32.whl", hash = "sha256:7770efcbc6915dabbb31ea0bdeee1105dabf76e1c8e31a454cb1983dcf19ecf1"},
+    {file = "dependency_injector-4.38.0-cp36-cp36m-win_amd64.whl", hash = "sha256:9e89a9c88317ad237abfb374c410e1466476ffefe6c44f3caeca3dce747a635c"},
+    {file = "dependency_injector-4.38.0-cp37-cp37m-macosx_10_9_x86_64.whl", hash = "sha256:cb75cd29c132bfaf03a11a6ac4f459dddb7a6526669543de57d2bb5fddf78def"},
+    {file = "dependency_injector-4.38.0-cp37-cp37m-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:d116c56e7fc3b59b3afa6078163b5f6ff4680ebf27800dd4032de7a04f7ef777"},
+    {file = "dependency_injector-4.38.0-cp37-cp37m-manylinux_2_5_i686.manylinux1_i686.manylinux_2_12_i686.manylinux2010_i686.whl", hash = "sha256:9df330ef9e24b6f94e6764d23180350c2fb99785257233ee4738e066b876fa7f"},
+    {file = "dependency_injector-4.38.0-cp37-cp37m-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:7a46639038313f64eca2dc858ac4cd9e0aca5ea21bb005f5d754aadd6446ba4b"},
+    {file = "dependency_injector-4.38.0-cp37-cp37m-win32.whl", hash = "sha256:d0d983b269b657744058b5858afc3c59443db53afe9c3e709e316daa9f9b9454"},
+    {file = "dependency_injector-4.38.0-cp37-cp37m-win_amd64.whl", hash = "sha256:1446df58169c166a5a2d5644ba9eeb3b7f2f679f260596f78d012c58ff140d92"},
+    {file = "dependency_injector-4.38.0-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:307396f2d9d2f532fe92079a56d40af5fc60dacb1d766e3f9cd04c3802a1c251"},
+    {file = "dependency_injector-4.38.0-cp38-cp38-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:8dd96b6c454ab86648f57f37b895c1c976b1a82b76f835011f607ee8a78ebc0e"},
+    {file = "dependency_injector-4.38.0-cp38-cp38-manylinux_2_5_i686.manylinux1_i686.manylinux_2_12_i686.manylinux2010_i686.whl", hash = "sha256:fb44b17e649cabcfd1f370ecfd492ac7a93216776d91954b31598eecb36cdb13"},
+    {file = "dependency_injector-4.38.0-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:ab8ebe728dd9b3be23c40ca5a5dbe195050d9ad35d42d7e9fdaea816f7134584"},
+    {file = "dependency_injector-4.38.0-cp38-cp38-win32.whl", hash = "sha256:1da3bad1452212bab76e87fbf7a71d3675190a1a909f345aaf8bae2fa97b878f"},
+    {file = "dependency_injector-4.38.0-cp38-cp38-win_amd64.whl", hash = "sha256:2918776e88de88be0e2be036261180ca0605c8f64ead43d835ce852f16a9efd2"},
+    {file = "dependency_injector-4.38.0-cp39-cp39-macosx_10_9_x86_64.whl", hash = "sha256:493be62561218624380d4eca9243a46753444f677217db6292a7b715cf429172"},
+    {file = "dependency_injector-4.38.0-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:0a70511db88f84ac4228b27e37e12ea0e04a9c2a32cae3602b9af9a27c0db992"},
+    {file = "dependency_injector-4.38.0-cp39-cp39-manylinux_2_5_i686.manylinux1_i686.manylinux_2_12_i686.manylinux2010_i686.whl", hash = "sha256:5e3e1cfe41a5ada0ff71889563441f538caff0399e41d3ee377b60fa50a858bf"},
+    {file = "dependency_injector-4.38.0-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:116cc679a2c6d40c6a4f968aefe68535e596e88e96315dbd0d0ad2ff76654e3d"},
+    {file = "dependency_injector-4.38.0-cp39-cp39-win32.whl", hash = "sha256:f703c2c161de067ba9893b56743d24fb4c9dbff92eb504bc082c2d2cfeab4c01"},
+    {file = "dependency_injector-4.38.0-cp39-cp39-win_amd64.whl", hash = "sha256:6821a864d6405dc0d5f794ac1b10da4a8c7e8731c6a0651a9682a0b76f5a5b3e"},
+    {file = "dependency_injector-4.38.0-pp37-pypy37_pp73-macosx_10_9_x86_64.whl", hash = "sha256:6c9e8dc91aa5831bd3a58fec1b94ed8c52f78f601f5ab91135b5ad44325beef7"},
+    {file = "dependency_injector-4.38.0-pp37-pypy37_pp73-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:2b4eedadef0c84295b70803a79a3ce5a10a59dddd8f306876f6fa6bfc4de8e00"},
+    {file = "dependency_injector-4.38.0-pp37-pypy37_pp73-manylinux_2_5_i686.manylinux1_i686.manylinux_2_12_i686.manylinux2010_i686.whl", hash = "sha256:2e88b5d09c80e20d6b3d985cc360f39a81e748667c20f6bc7eee9f4b832176ed"},
+    {file = "dependency_injector-4.38.0-pp37-pypy37_pp73-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:b1fcd71ff46e097f4e47917ccdf6aa388b6a6372557f7d9f83db1e879e95f8bb"},
+    {file = "dependency_injector-4.38.0-pp37-pypy37_pp73-win_amd64.whl", hash = "sha256:9633d6366282e83a3f21543c5c78299787948333d9fe6649b020cfac93d8b7ca"},
+]
+
+[package.dependencies]
+six = ">=1.7.0,<=1.16.0"
+
+[package.extras]
+aiohttp = ["aiohttp"]
+flask = ["flask"]
+pydantic = ["pydantic"]
+yaml = ["pyyaml"]
+
+[[package]]
 name = "distlib"
 version = "0.3.9"
 description = "Distribution utilities"
@@ -258,6 +313,71 @@ doq = ["aioquic (>=1.0.0)"]
 idna = ["idna (>=3.7)"]
 trio = ["trio (>=0.23)"]
 wmi = ["wmi (>=1.5.1)"]
+
+[[package]]
+name = "elastic-transport"
+version = "8.17.1"
+description = "Transport classes and utilities shared among Python Elastic client libraries"
+optional = false
+python-versions = ">=3.8"
+groups = ["main"]
+files = [
+    {file = "elastic_transport-8.17.1-py3-none-any.whl", hash = "sha256:192718f498f1d10c5e9aa8b9cf32aed405e469a7f0e9d6a8923431dbb2c59fb8"},
+    {file = "elastic_transport-8.17.1.tar.gz", hash = "sha256:5edef32ac864dca8e2f0a613ef63491ee8d6b8cfb52881fa7313ba9290cac6d2"},
+]
+
+[package.dependencies]
+certifi = "*"
+urllib3 = ">=1.26.2,<3"
+
+[package.extras]
+develop = ["aiohttp", "furo", "httpx", "opentelemetry-api", "opentelemetry-sdk", "orjson", "pytest", "pytest-asyncio", "pytest-cov", "pytest-httpserver", "pytest-mock", "requests", "respx", "sphinx (>2)", "sphinx-autodoc-typehints", "trustme"]
+
+[[package]]
+name = "elasticsearch"
+version = "8.17.2"
+description = "Python client for Elasticsearch"
+optional = false
+python-versions = ">=3.8"
+groups = ["main"]
+files = [
+    {file = "elasticsearch-8.17.2-py3-none-any.whl", hash = "sha256:2d058dcddd8f2686cd431a916cdf983f9fb7d211d902834f564ab7df05ba6478"},
+    {file = "elasticsearch-8.17.2.tar.gz", hash = "sha256:ff7f1db8aeefd87ceba4edce3aa4070994582e6cf029d2e67b74e66d634509db"},
+]
+
+[package.dependencies]
+elastic-transport = ">=8.15.1,<9"
+
+[package.extras]
+async = ["aiohttp (>=3,<4)"]
+dev = ["aiohttp", "black", "build", "coverage", "isort", "jinja2", "mapbox-vector-tile", "nox", "numpy", "orjson", "pandas", "pyarrow", "pytest", "pytest-asyncio", "pytest-cov", "python-dateutil", "pyyaml (>=5.4)", "requests (>=2,<3)", "simsimd", "twine", "unasync"]
+docs = ["sphinx", "sphinx-autodoc-typehints", "sphinx-rtd-theme (>=2.0)"]
+orjson = ["orjson (>=3)"]
+pyarrow = ["pyarrow (>=1)"]
+requests = ["requests (>=2.4.0,!=2.32.2,<3.0.0)"]
+vectorstore-mmr = ["numpy (>=1)", "simsimd (>=3)"]
+
+[[package]]
+name = "elasticsearch-dsl"
+version = "8.17.1"
+description = "Python client for Elasticsearch"
+optional = false
+python-versions = ">=3.8"
+groups = ["main"]
+files = [
+    {file = "elasticsearch_dsl-8.17.1-py3-none-any.whl", hash = "sha256:49ee12a6a8d43fcfc0af42b49649531a6ef228c9e4795325de27f6b309b62b6d"},
+    {file = "elasticsearch_dsl-8.17.1.tar.gz", hash = "sha256:d8170699bfdb4fe7fab3854cdac319a2d6dddbaa29c9ea7993d2ec22056db5a0"},
+]
+
+[package.dependencies]
+elastic-transport = ">=8.0.0,<9.0.0"
+elasticsearch = ">=8.0.0,<9.0.0"
+python-dateutil = "*"
+typing-extensions = "*"
+
+[package.extras]
+async = ["elasticsearch[async] (>=8.0.0,<9.0.0)"]
+develop = ["coverage", "elasticsearch[async]", "jinja2", "mypy", "nltk", "pyright", "pytest", "pytest-asyncio", "pytest-cov", "pytest-mock", "pytz", "sentence-transformers", "sphinx (>2)", "sphinx-rtd-theme (>0.5)", "tqdm", "types-python-dateutil", "types-pytz", "types-tqdm", "unasync"]
 
 [[package]]
 name = "exceptiongroup"
@@ -336,28 +456,6 @@ files = [
 docs = ["furo (>=2024.8.6)", "sphinx (>=8.1.3)", "sphinx-autodoc-typehints (>=3)"]
 testing = ["covdefaults (>=2.3)", "coverage (>=7.6.10)", "diff-cover (>=9.2.1)", "pytest (>=8.3.4)", "pytest-asyncio (>=0.25.2)", "pytest-cov (>=6)", "pytest-mock (>=3.14)", "pytest-timeout (>=2.3.1)", "virtualenv (>=20.28.1)"]
 typing = ["typing-extensions (>=4.12.2) ; python_version < \"3.11\""]
-
-[[package]]
-name = "gunicorn"
-version = "23.0.0"
-description = "WSGI HTTP Server for UNIX"
-optional = false
-python-versions = ">=3.7"
-groups = ["main"]
-files = [
-    {file = "gunicorn-23.0.0-py3-none-any.whl", hash = "sha256:ec400d38950de4dfd418cff8328b2c8faed0edb0d517d3394e457c317908ca4d"},
-    {file = "gunicorn-23.0.0.tar.gz", hash = "sha256:f014447a0101dc57e294f6c18ca6b40227a4c90e9bdb586042628030cba004ec"},
-]
-
-[package.dependencies]
-packaging = "*"
-
-[package.extras]
-eventlet = ["eventlet (>=0.24.1,!=0.36.0)"]
-gevent = ["gevent (>=1.4.0)"]
-setproctitle = ["setproctitle"]
-testing = ["coverage", "eventlet", "gevent", "pytest", "pytest-cov"]
-tornado = ["tornado (>=0.2)"]
 
 [[package]]
 name = "h11"
@@ -856,7 +954,7 @@ version = "24.2"
 description = "Core utilities for Python packages"
 optional = false
 python-versions = ">=3.8"
-groups = ["main", "dev"]
+groups = ["dev"]
 files = [
     {file = "packaging-24.2-py3-none-any.whl", hash = "sha256:09abb1bccd265c01f4a3aa3f7a7db064b36514d2cba19a2f694fe6150451a759"},
     {file = "packaging-24.2.tar.gz", hash = "sha256:c228a6dc5e932d346bc5739379109d49e8853dd8223571c7c5b55260edc0b97f"},
@@ -1331,6 +1429,21 @@ tomli = {version = ">=2.0.1", markers = "python_version < \"3.11\""}
 testing = ["covdefaults (>=2.3)", "coverage (>=7.6.1)", "pytest-mock (>=3.14)"]
 
 [[package]]
+name = "python-dateutil"
+version = "2.9.0.post0"
+description = "Extensions to the standard Python datetime module"
+optional = false
+python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,>=2.7"
+groups = ["main"]
+files = [
+    {file = "python-dateutil-2.9.0.post0.tar.gz", hash = "sha256:37dd54208da7e1cd875388217d5e00ebd4179249f90fb72437e91a35459a0ad3"},
+    {file = "python_dateutil-2.9.0.post0-py2.py3-none-any.whl", hash = "sha256:a8b2bc7bffae282281c8140a97d3aa9c14da0b136dfe83f850eea9a5f7470427"},
+]
+
+[package.dependencies]
+six = ">=1.5"
+
+[[package]]
 name = "python-dotenv"
 version = "1.1.0"
 description = "Read key-value pairs from a .env file and set them as environment variables"
@@ -1454,6 +1567,18 @@ files = [
     {file = "ruff-0.5.7-py3-none-win_amd64.whl", hash = "sha256:083bbcbe6fadb93cd86709037acc510f86eed5a314203079df174c40bbbca6b3"},
     {file = "ruff-0.5.7-py3-none-win_arm64.whl", hash = "sha256:2dca26154ff9571995107221d0aeaad0e75a77b5a682d6236cf89a58c70b76f4"},
     {file = "ruff-0.5.7.tar.gz", hash = "sha256:8dfc0a458797f5d9fb622dd0efc52d796f23f0a1493a9527f4e49a550ae9a7e5"},
+]
+
+[[package]]
+name = "six"
+version = "1.16.0"
+description = "Python 2 and 3 compatibility utilities"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*"
+groups = ["main"]
+files = [
+    {file = "six-1.16.0-py2.py3-none-any.whl", hash = "sha256:8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254"},
+    {file = "six-1.16.0.tar.gz", hash = "sha256:1e61c37477a1626458e36f7b1d82aa5c9b094fa4802892072e49de9c60c4c926"},
 ]
 
 [[package]]
@@ -1656,6 +1781,24 @@ files = [
     {file = "ujson-5.10.0-pp39-pypy39_pp73-win_amd64.whl", hash = "sha256:e1402f0564a97d2a52310ae10a64d25bcef94f8dd643fcf5d310219d915484f7"},
     {file = "ujson-5.10.0.tar.gz", hash = "sha256:b3cd8f3c5d8c7738257f1018880444f7b7d9b66232c64649f562d7ba86ad4bc1"},
 ]
+
+[[package]]
+name = "urllib3"
+version = "2.4.0"
+description = "HTTP library with thread-safe connection pooling, file post, and more."
+optional = false
+python-versions = ">=3.9"
+groups = ["main"]
+files = [
+    {file = "urllib3-2.4.0-py3-none-any.whl", hash = "sha256:4e16665048960a0900c702d4a66415956a584919c03361cac9f1df5c5dd7e813"},
+    {file = "urllib3-2.4.0.tar.gz", hash = "sha256:414bc6535b787febd7567804cc015fee39daab8ad86268f1310a9250697de466"},
+]
+
+[package.extras]
+brotli = ["brotli (>=1.0.9) ; platform_python_implementation == \"CPython\"", "brotlicffi (>=0.8.0) ; platform_python_implementation != \"CPython\""]
+h2 = ["h2 (>=4,<5)"]
+socks = ["pysocks (>=1.5.6,!=1.5.7,<2.0)"]
+zstd = ["zstandard (>=0.18.0)"]
 
 [[package]]
 name = "uvicorn"
@@ -2042,4 +2185,4 @@ propcache = ">=0.2.1"
 [metadata]
 lock-version = "2.1"
 python-versions = ">3.9.1,<4"
-content-hash = "31a545d4407c266d909380a0464a770c79e8c35d1ba1b8b49d7daa74ac598236"
+content-hash = "90a14bcf8e150a651434ba4b5b26b4f1fa7f24e0e613ae7217405c40f2134fb4"
