@@ -22,9 +22,9 @@ redis = {version = "^5.2.1", extras = ["hiredis"]}
 httptools = "^0.6.4"
 pymongo = "^4.10.1"
 loguru = "^0.7.3"
-dependency-injector = "4.38.0"
 elasticsearch = "^8.17.2"
 elasticsearch-dsl = "^8.17.1"
+dependency-injector = "^4.46.0"
 
 
 [tool.poetry.group.dev.dependencies]

@@ -5,7 +5,7 @@ from imago.services.elasticsearch.client import ElasticsearchClient
 
 
 class Container(DeclarativeContainer):
-    """Container used dependency injection."""
+    """Container used for dependency injection."""
 
     config = Configuration()
 
