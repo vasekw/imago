@@ -1,4 +1,4 @@
-"""Redis API."""
+"""Media API."""
 
 from imago.web.api.media.views import router
 

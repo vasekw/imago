@@ -1,0 +1,23 @@
+### GET request to local server with default search values
+GET http://127.0.0.1:8000/api/media/search
+###
+
+### GET request to local server with no query and search on description field
+GET http://127.0.0.1:8000/api/media/search?q=&search_by=description
+###
+
+### GET request to local server with "apple" query and search on description field
+GET http://127.0.0.1:8000/api/media/search?q=apple&search_by=description
+###
+
+### GET request to local server with search term, size, and pagination
+GET http://127.0.0.1:8000/api/media/search?q=berlin&size=100&page=2
+###
+
+### GET request to local server with search term, size, pagination, and sort direction
+GET http://127.0.0.1:8000/api/media/search?q=berlin&size=100&page=2&sort_direction=desc
+###
+
+### GET request to local server with search term, size, pagination, sort direction, and sort by
+GET http://127.0.0.1:8000/api/media/search?q=berlin&size=100&page=2&sort_direction=asc&sort_by=fotografen
+###

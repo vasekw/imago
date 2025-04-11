@@ -1,9 +1,0 @@
-### GET request to example server
-GET http://127.0.0.1:8000/api/media/search?q=berlin
-
-###
-
-### GET request to example server
-GET http://127.0.0.1:8000/api/media/search?q=berlin&size=100
-
-###

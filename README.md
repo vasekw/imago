@@ -50,7 +50,6 @@ $ tree "imago"
 imago
 ├── conftest.py  # Fixtures for all tests.
 ├── __main__.py  # Startup script. Starts uvicorn.
-├── services  # Package for different external services such as rabbit or redis etc.
 ├── settings.py  # Main configuration settings for project.
 ├── static  # Static content.
 ├── tests  # Tests for project.
@@ -58,6 +57,7 @@ imago
     ├── api  # Package with all handlers.
     │   └── router.py  # Main router.
     ├── application.py  # FastAPI application configuration.
+    ├── container.py  # Dependency injector container configuration.
     └── lifespan.py  # Contains actions to perform on startup and shutdown.
 ```
 

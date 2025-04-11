@@ -1,10 +1,8 @@
 import enum
 from pathlib import Path
 from tempfile import gettempdir
-from typing import Optional
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
-from yarl import URL
 
 TEMP_DIR = Path(gettempdir())
 
@@ -46,32 +44,6 @@ class Settings(BaseSettings):
     elasticsearch_index: str
     elasticsearch_user: str
     elasticsearch_password: str
-
-    # Variables for Redis
-    redis_host: str = "imago-redis"
-    redis_port: int = 6379
-    redis_user: Optional[str] = None
-    redis_pass: Optional[str] = None
-    redis_base: Optional[int] = None
-
-    @property
-    def redis_url(self) -> URL:
-        """
-        Assemble REDIS URL from settings.
-
-        :return: redis URL.
-        """
-        path = ""
-        if self.redis_base is not None:
-            path = f"/{self.redis_base}"
-        return URL.build(
-            scheme="redis",
-            host=self.redis_host,
-            port=self.redis_port,
-            user=self.redis_user,
-            password=self.redis_pass,
-            path=path,
-        )
 
     model_config = SettingsConfigDict(
         env_file=".env",
