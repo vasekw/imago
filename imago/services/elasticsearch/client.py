@@ -15,7 +15,7 @@ logger = logging.getLogger(__name__)
 
 
 class ElasticsearchClient:
-    """Client used to connect to Elasticsearch and elasticsearch_dsl for querying."""
+    """Client for interacting with Elasticsearch."""
 
     def __init__(
         self,
@@ -41,13 +41,11 @@ class ElasticsearchClient:
         search_by: Optional[SearchByField] = None,
         sort_direction: SortDirection = SortDirection.asc,
     ) -> List[MediaItem]:
-        """Search using a robust fallback query with elasticsearch_dsl."""
+        """Search media for a query."""
         try:
-            # Start with Search object
             s = Search(index=self.index)
 
             if query.strip():
-                # If there's a query string, use query_string search
                 s = s.query(
                     "query_string",
                     query=query,
@@ -58,31 +56,22 @@ class ElasticsearchClient:
                     ),
                 )
             elif search_by:
-                # If no query but search_by is provided, use exists query for the field
                 s = s.query("exists", field=search_by.value)
 
-            # Add sorting
             s = s.sort({f"{sort_by.value}": {"order": sort_direction.value}})
-
-            # Add pagination
             start = (page - 1) * size
             s = s[start : start + size]
 
             logger.debug(f"ES Query: {s.to_dict()}")
-
-            # Execute search
             response = s.execute()
 
-            media_items = []
-
-            for hit in response:
-                item = MediaItem(
+            return [
+                MediaItem(
                     id=hit.meta.id,
                     image_id=getattr(hit, "bildnummer", None),
                     title=getattr(hit, "title", None),
                     description=getattr(hit, "description", None),
                     db=getattr(hit, "db", ""),
-                    # assuming db is required, provide a default empty string
                     date=getattr(hit, "datum", None),
                     photographer=getattr(hit, "fotografen", None),
                     width=getattr(hit, "breite", None),
@@ -92,10 +81,8 @@ class ElasticsearchClient:
                         getattr(hit, "bildnummer", ""),
                     ),
                 )
-
-                media_items.append(item)
-
-            return media_items
+                for hit in response
+            ]
 
         except Exception as e:
             logger.error(f"Elasticsearch DSL search error: {e}")

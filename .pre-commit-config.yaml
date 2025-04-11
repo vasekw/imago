@@ -17,7 +17,8 @@ repos:
             language: system
             pass_filenames: false
             always_run: true
-            args: ["check", "imago", "tests", "--fix"]
+            args: ["check", "imago", "--fix"]
+            exclude: 'tests/.*'
 
           - id: mypy
             name: Validate types with MyPy
