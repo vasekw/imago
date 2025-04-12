@@ -18,6 +18,9 @@ RUN --mount=type=cache,target=/tmp/poetry_cache poetry install --only main
 COPY . /app/src/
 RUN --mount=type=cache,target=/tmp/poetry_cache poetry install --only main
 
+# Expose port 8000 so that it can be accessed outside the container
+EXPOSE 8000
+
 CMD ["/usr/local/bin/python", "-m", "imago", "run", "--host", "0.0.0.0"]
 
 FROM prod AS dev
