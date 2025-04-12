@@ -1,15 +1,16 @@
 from dependency_injector.wiring import Provide, inject
-from fastapi import APIRouter, Depends, Query
+from fastapi import APIRouter, Depends, HTTPException, Query
 from loguru import logger
+from result import Err, Ok
 
 from imago.services.elasticsearch.client import ElasticsearchClient
-from imago.web.api.media.schema import (
+from imago.web.container import Container
+from imago.web.domain.schema import (
     SearchByField,
     SearchResponse,
     SortByField,
     SortDirection,
 )
-from imago.web.container import Container
 
 router = APIRouter()
 
@@ -38,7 +39,7 @@ async def get_media(
         f"sort_by: {sort_by}, search_by: {search_by}",
     )
 
-    results = es_client.search_media(
+    result = es_client.search_media(
         query=q,
         size=size,
         page=page,
@@ -46,4 +47,9 @@ async def get_media(
         sort_direction=sort_direction,
         search_by=search_by,
     )
-    return SearchResponse(results=results, total=len(results))
+
+    match result:
+        case Ok(value):
+            return SearchResponse(results=value, total=len(value))
+        case Err(value):
+            raise HTTPException(status_code=500, detail=value)

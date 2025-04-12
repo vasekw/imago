@@ -1,10 +1,11 @@
 import logging
 from typing import List, Optional
 
-from elasticsearch_dsl import Search, connections
+from elasticsearch_dsl import Search
+from result import Err, Ok, Result
 
-from imago.services.elasticsearch.utils import build_media_url
-from imago.web.api.media.schema import (
+from imago.services.elasticsearch.connection import ElasticsearchConnection
+from imago.web.domain.schema import (
     MediaItem,
     SearchByField,
     SortByField,
@@ -19,18 +20,18 @@ class ElasticsearchClient:
 
     def __init__(
         self,
-        host: str,
-        port: int,
+        connection: ElasticsearchConnection,
         index: str,
-        user: str,
-        password: str,
+        image_base_url: str,
+        image_file_name: str,
     ) -> None:
         self.index = index
-        self.client = connections.create_connection(
-            hosts=[{"host": host, "port": port, "scheme": "https"}],
-            http_auth=(user, password),
-            verify_certs=False,
-        )
+        self.client = connection.client
+        self.image_base_url = image_base_url
+        self.image_file_name = image_file_name
+
+    def _build_media_url(self, db: str, media_id: str) -> str:
+        return f"{self.image_base_url}/{db}/{media_id.zfill(10)}/{self.image_file_name}"
 
     def search_media(
         self,
@@ -40,7 +41,7 @@ class ElasticsearchClient:
         sort_by: SortByField = SortByField.date,
         search_by: Optional[SearchByField] = None,
         sort_direction: SortDirection = SortDirection.asc,
-    ) -> List[MediaItem]:
+    ) -> Result[List[MediaItem], str]:
         """Search media for a query."""
         try:
             s = Search(index=self.index)
@@ -65,25 +66,27 @@ class ElasticsearchClient:
             logger.debug(f"ES Query: {s.to_dict()}")
             response = s.execute()
 
-            return [
-                MediaItem(
-                    id=hit.meta.id,
-                    image_id=getattr(hit, "bildnummer", None),
-                    title=getattr(hit, "title", None),
-                    description=getattr(hit, "description", None),
-                    db=getattr(hit, "db", ""),
-                    date=getattr(hit, "datum", None),
-                    photographer=getattr(hit, "fotografen", None),
-                    width=getattr(hit, "breite", None),
-                    height=getattr(hit, "hoehe", None),
-                    thumbnail_url=build_media_url(
-                        getattr(hit, "db", ""),
-                        getattr(hit, "bildnummer", ""),
-                    ),
-                )
-                for hit in response
-            ]
+            return Ok(
+                [
+                    MediaItem(
+                        id=hit.meta.id,
+                        image_id=getattr(hit, "bildnummer", None),
+                        title=getattr(hit, "title", None),
+                        description=getattr(hit, "description", None),
+                        db=getattr(hit, "db", ""),
+                        date=getattr(hit, "datum", None),
+                        photographer=getattr(hit, "fotografen", None),
+                        width=getattr(hit, "breite", None),
+                        height=getattr(hit, "hoehe", None),
+                        thumbnail_url=self._build_media_url(
+                            getattr(hit, "db", ""),
+                            getattr(hit, "bildnummer", ""),
+                        ),
+                    )
+                    for hit in response
+                ],
+            )
 
         except Exception as e:
             logger.error(f"Elasticsearch DSL search error: {e}")
-            return []
+            return Err("An error occurred")

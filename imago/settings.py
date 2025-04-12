@@ -45,6 +45,10 @@ class Settings(BaseSettings):
     elasticsearch_user: str
     elasticsearch_password: str
 
+    # Variables for image url
+    image_base_url: str
+    image_file_name: str
+
     model_config = SettingsConfigDict(
         env_file=".env",
         env_prefix="IMAGO_",

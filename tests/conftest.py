@@ -16,6 +16,8 @@ def mock_env_variables(monkeypatch):
         "IMAGO_ELASTICSEARCH_INDEX": "test_index",
         "IMAGO_ELASTICSEARCH_USER": "elastic",
         "IMAGO_ELASTICSEARCH_PASSWORD": "password",
+        "IMAGO_IMAGE_BASE_URL": "http://localhost:8000",
+        "IMAGO_IMAGE_FILE_NAME": "s.jpg",
     }
 
     for key, value in env_vars.items():
@@ -32,6 +34,7 @@ def container(mock_env_variables):
 
 @pytest.fixture
 def app(container):
+    # Delay import so env vars are applied first
     from imago.web.application import get_app
 
     return get_app(container=container)
