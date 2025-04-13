@@ -75,11 +75,17 @@ For example if you see in your "imago/settings.py" a variable named like
 variable to configure the value. This behaviour can be changed by overriding `env_prefix` property
 in `imago.settings.Settings.Config`.
 
-An example of .env file:
+To run the application, you **must** set the following environment variables (all with the IMAGO_ELASTICSEARCH_ prefix need to be set):
 ```bash
-IMAGO_RELOAD="True"
-IMAGO_PORT="8000"
-IMAGO_ENVIRONMENT="dev"
+IMAGO_RELOAD=True
+IMAGO_ELASTICSEARCH_HOST=
+IMAGO_ELASTICSEARCH_PORT=
+IMAGO_ELASTICSEARCH_INDEX=
+IMAGO_ELASTICSEARCH_USER=
+IMAGO_ELASTICSEARCH_PASSWORD=
+IMAGO_IMAGE_BASE_URL=https://www.imago-images.de/bild
+IMAGO_IMAGE_FILE_NAME=s.jpg
+
 ```
 
 You can read more about BaseSettings class here: https://pydantic-docs.helpmanual.io/usage/settings/

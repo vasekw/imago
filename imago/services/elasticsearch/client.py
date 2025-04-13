@@ -72,7 +72,10 @@ class ElasticsearchClient:
                         id=hit.meta.id,
                         image_id=getattr(hit, "bildnummer", None),
                         title=getattr(hit, "title", None),
-                        description=getattr(hit, "description", None),
+                        description=(
+                            getattr(hit, "description", None)
+                            or getattr(hit, "suchtext", None)
+                        ),
                         db=getattr(hit, "db", ""),
                         date=getattr(hit, "datum", None),
                         photographer=getattr(hit, "fotografen", None),
