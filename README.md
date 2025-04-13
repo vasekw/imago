@@ -48,11 +48,10 @@ docker-compose build
 ```bash
 $ tree "imago"
 imago
-├── conftest.py  # Fixtures for all tests.
 ├── __main__.py  # Startup script. Starts uvicorn.
 ├── settings.py  # Main configuration settings for project.
-├── static  # Static content.
 ├── tests  # Tests for project.
+    ├── conftest.py  # Fixtures for all tests.
 └── web  # Package contains web server. Handlers, startup config.
     ├── api  # Package with all handlers.
     │   └── router.py  # Main router.
