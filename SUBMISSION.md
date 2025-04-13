@@ -1,6 +1,6 @@
 # IMAGO Coding Challenge – Backend-Focused Submission
 
-## Overview
+## 1. Overview
 
 This document outlines my solution to the IMAGO coding challenge. I chose to emphasise the backend implementation, building a robust and modular FastAPI-based service that interacts with the provided Elasticsearch index, retrieves and normalises media content, and exposes an API endpoint for clients to consume.
 
@@ -9,7 +9,7 @@ The source code is available at: [[GITHUB](https://github.com/vasekw/imago)]
 The service is also hosted on the free-tier of Render: [[API Docs](https://imago-f5x4.onrender.com/api/docs)] 
 (note that the initial request can take time as the container spins down after 15 minutes of inactivity)
 
-## Features Implemented
+## 2. Features Implemented
 
 - API using **FastAPI**
 - Integration with  `elasticsearch_dsl`
@@ -22,7 +22,7 @@ The service is also hosted on the free-tier of Render: [[API Docs](https://imago
 
 ---
 
-## Key Assumptions
+## 3. Key Assumptions
 
 - Elasticsearch is used primarily for read access; media data is pre-indexed.
 - Media thumbnails can be constructed via the formula: `https://www.imago-images.de/bild/<DB>/<MEDIA_ID.zfill(10)>/s.jpg`
@@ -31,20 +31,20 @@ The service is also hosted on the free-tier of Render: [[API Docs](https://imago
   - db
 ---
 
-## Identified Issue – Inconsistent Field Availability
+## 4. Identified Issue – Inconsistent Field Availability
 
 A key issue encountered during development is inconsistent data across Elasticsearch documents. In particular:
 
 - Fields like `title` and `description` are frequently **absent**.
 - A field named `suchtext` often contains a **combined** or fallback text block (sometimes merging title/description), but its structure is unpredictable.
 
-### Performance Impact
+### 4.1. Performance Impact
 
 - The absence of structured fields like `title` and `description` means that keyword queries relying on them (e.g. `search_by=title`) often yield **no results**, making the filtering mechanism unreliable.
 - Search queries that rely on multiple fields (`fields=["title", "description"]`) increase the likelihood of empty matches and wasted query computation.
 - Overhead from fallback logic (e.g., manually inspecting `suchtext`) adds complexity and slows down post-query data normalisation.
 
-### Proposed Rectification
+### 4.2. Proposed Rectification
 
 1. **Data Pipeline Improvement**:
    - Update the indexing pipeline to ensure that each document contains properly parsed and structured fields: `title`, `description`, and `tags` if applicable.
@@ -63,27 +63,27 @@ A key issue encountered during development is inconsistent data across Elasticse
 
 ---
 
-## Scalability & Maintainability
+## 5. Scalability & Maintainability
 
 The current architecture supports horizontal scalability and ease of maintenance through several design choices:
 
-### Horizontal Scaling
+### 5.1. Horizontal Scaling
 - The backend is stateless and can be horizontally scaled by running multiple instances behind a load balancer (e.g., using Kubernetes)
 
-### Efficient Querying
+### 5.2. Efficient Querying
 - All search queries support pagination, limiting memory and CPU usage per request.
 - Optional filters and sorting fields allow for fine-grained control over query complexity and performance impact.
 - Asynchronous FastAPI endpoints (using async def) support high concurrency under load.
 
-### Modular Design
+### 5.3. Modular Design
 - The codebase is divided into isolated modules (client, container, views, etc.) with clearly defined responsibilities.
 - New data providers, authentication layers, or feature flags can be added with minimal disruption.
 
-### Cloud-native Readiness
+### 5.4. Cloud-native Readiness
 - The app can be deployed using Docker and integrated into CI/CD pipelines for automated testing and delivery. 
 - Secrets (e.g., ES credentials) are handled through environment variables or secret managers, allowing secure cloud deployment.
 
-### Maintenance
+### 5.5. Maintenance
 - Dependency injection makes it easier to mock or swap components during testing and development.
 - Centralised configuration via settings.py simplifies management across environments.
 - Type-annotated code and Pydantic schemas enable auto-validation and clear API contracts.
@@ -92,7 +92,7 @@ The current architecture supports horizontal scalability and ease of maintenance
 
 ---
 
-## Monitoring & Testing
+## 6. Monitoring & Testing
 
 - Structured logs provide traceability for user queries and internal errors.
 - Tests are written using `pytest` and include:
@@ -102,7 +102,7 @@ The current architecture supports horizontal scalability and ease of maintenance
 
 ---
 
-## Potential Enhancements
+## 7. Potential Enhancements
 
 - Add fuzzy search or synonym support for broader results.
 - Extend query filters to include date ranges, photographer, or DB type.
@@ -111,7 +111,7 @@ The current architecture supports horizontal scalability and ease of maintenance
 
 ---
 
-## Conclusion
+## 8. Conclusion
 
 Thank you for the opportunity!
 
